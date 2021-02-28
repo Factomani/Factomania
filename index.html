@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>Calculator</title>
+<style>
+    .cbody{
+        width:260px;
+        height:450px;
+        border:2px solid grey;
+padding:0px;
+box-shadow: 2px 3px 5px 3px black;
+background:lightgrey;
+    }
+#display{
+    width: 250px;
+    height:50px;
+    background:rgb(5, 243, 5);
+    border:2px solid grey;
+    margin-top:5px;
+padding:0px;
+box-shadow: 2px 3px 5px 3px black;
+font-size:20px;
+text-align:right;
+}
+.divb{
+margin-top:20px;
+border:0px solid grey;
+padding:0px;
+background:lightgrey;
+}
+.b{
+font-size:20px;
+height:50px;
+width:50px;
+border:2px solid grey;
+margin:2px;
+box-shadow: 2px 3px 5px 3px black;
+background:lightgrey;
+}
+td : hover{
+    border:0px;
+    background-color:lightblue;
+}
+.bigb{
+    font-size:20px;
+height:110px;
+width:50px;
+border:2px solid grey;
+margin:5px;
+box-shadow: 2px 3px 5px 3px black;
+background:lightgrey;
+}
+.lb{
+    font-size:20px;
+height:50px;
+width:115px;
+border:2px solid grey;
+margin:5px;
+box-shadow: 2px 3px 5px 3px black;
+background:lightgrey;
+}
+table{
+    border:2px solid black;
+}
+span{
+
+    color:rgb(65, 64, 66);
+    margin-left:-185px;
+    text-shadow: 0.5px 0.2px;
+    border:3px groove ;
+    font-weight:600;
+}
+</style>
+</head>
+<body>
+<center>
+<div class="cbody">
+<input type="text" id='display'>
+    <table class="divb">
+<tr>
+<td><button class="b" onclick="clr()">C</button></td>
+<td><button class="b" onclick="b('/')">/</button></td>
+<td><button class="b" onclick="b('*')">*</button></td> 
+<td><button class="b" onclick="b('-')">-</button></td>
+</tr>
+<tr>
+<td><button class="b" onclick="b(1)">1</button></td>
+<td><button class="b" onclick="b(2)">2</button></td>
+<td><button class="b" onclick="b(3)">3</button></td>
+<td rowspan='2'><button class="bigb" onclick="b('+')">+</button></td>
+</tr>
+<td><button class="b" onclick="b(4)">4</button></td>
+<td><button class="b" onclick="b(5)">5</button></td>
+<td><button class="b" onclick="b(6)">6</button></td>
+<tr>
+<td><button class="b" onclick="b(7)">7</button></td>
+<td><button class="b" onclick="b(8)">8</button></td>
+<td><button class="b" onclick="b(9)">9</button></td>
+<td rowspan="2"><button class="bigb" onclick="cal()">=</button>
+ </tr> 
+ <tr>  
+    <td colspan="2"><button class="lb" onclick="b(0)">0</button></td>
+    <td><button class="b" onclick="b('.')">.</button></td> 
+</tr>
+ </table>
+ <span id="clock"></span>
+</div>
+
+</div>
+</center>
+
+<script>
+function b(x){
+
+}
+</script>
+<script>
+    var obj=document.getElementById('display');
+function b(x){
+    obj.value+=x;
+}
+function cal(){
+    var val= document.getElementById('display').value;
+    obj.value=eval(val);
+}
+function clr(){
+    obj.value="";
+}
+function clock(){
+    var date= new Date();
+    var h=date.getHours();
+    var m=date.getMinutes();
+    var s=date.getSeconds();
+    h=add(h);
+    m=add(m);
+    s=add(s);
+    document.getElementById('clock').innerText= h + ':' + m + ':' + s ;
+    var update= setTimeout(function(){clock()},1000);
+    }
+    function add(i){
+        if(i<10){
+            return "0" + i;
+        }
+        else{
+            return i;
+        }
+    }
+    clock();
+</script>
+</body>
+</html>
